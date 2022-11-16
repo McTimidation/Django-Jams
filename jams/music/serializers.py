@@ -17,5 +17,5 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class SongSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
-        fields = ['title', 'duration', 'artist', 'album']
+        fields = ['id', 'title', 'artist', 'album']
         
