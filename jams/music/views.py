@@ -18,8 +18,13 @@ class AlbumViewSet(ModelViewSet):
     serializer_class = AlbumSerializer
 
 class PlaylistViewSet(ModelViewSet):
+    pp(Song.objects.all())
     queryset = Playlist.objects.all()
     serializer_class = PlaylistSerializer
+
+
+
+
 
 # Read Operation
 # class ListSongs(APIView):
