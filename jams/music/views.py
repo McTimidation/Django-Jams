@@ -1,14 +1,25 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
-from .serializers import SongSerializer
-from .models import Song
+from .serializers import *
+from .models import *
 from rest_framework.response import Response
 
 class SongViewSet(ModelViewSet):
     queryset = Song.objects.all()
     serializer_class = SongSerializer
 
+class ArtistViewSet(ModelViewSet):
+    queryset = Artist.objects.all()
+    serializer_class = ArtistSerializer
+
+class AlbumViewSet(ModelViewSet):
+    queryset = Album.objects.all()
+    serializer_class = AlbumSerializer
+
+class PlaylistViewSet(ModelViewSet):
+    queryset = Playlist.objects.all()
+    serializer_class = PlaylistSerializer
 
 # Read Operation
 # class ListSongs(APIView):
