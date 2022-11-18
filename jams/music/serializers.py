@@ -22,16 +22,15 @@ class ArtistSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'fans']
 
 class AlbumSerializer(serializers.ModelSerializer):
+    songs = serializers.StringRelatedField(many=True)
     class Meta:
         model = Album
-        fields = ['id', 'title', 'release_date']
-
+        fields = ['id', 'title', 'release_date', 'songs']
 
 
 class SongSerializer(serializers.ModelSerializer):
     artist = ArtistSerializer()
     album = AlbumSerializer()
-    # artist = Artist.objects.get(name=Artist['name'])
     class Meta:
         model = Song
         fields = ['id', 'title', 'artist', 'album']
@@ -43,8 +42,6 @@ class SongSerializer(serializers.ModelSerializer):
         alb_inst, created = Album.objects.get_or_create(title=album['title'])
         song = Song.objects.create(**validated_data, artist=art_inst, album=alb_inst)
         return song
-
-
 
 
 class PlaylistSerializer(serializers.ModelSerializer):
